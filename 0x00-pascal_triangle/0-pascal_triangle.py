@@ -1,5 +1,3 @@
-from math import comb
-
 """Contains function that returns a list of lists of integers
 reprsenting the Pascal's triangle"""
 
