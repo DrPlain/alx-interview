@@ -2,15 +2,6 @@
 reprsenting the Pascal's triangle"""
 
 
-def factorial(n):
-    """Helper function for calculating factorial"""
-    if n == 0:
-        return 1
-    elif n == 1:
-        return 1
-    return n * factorial(n-1)
-
-
 def pascal_triangle(n):
     """Returns list of lists of pascal's triangle integers"""
 
@@ -20,6 +11,14 @@ def pascal_triangle(n):
         # The coefficeint of any value of n is given by
         # coeff = nCr = n! / (r! * (n-r)!)
         list_of_list = []
+
+        def factorial(n):
+            """Helper function for calculating factorial"""
+            if n == 0:
+                return 1
+            elif n == 1:
+                return 1
+            return n * factorial(n-1)
 
         for _ in range(n):
             pascal_list = []
