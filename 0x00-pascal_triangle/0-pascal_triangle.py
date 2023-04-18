@@ -5,8 +5,7 @@ reprsenting the Pascal's triangle
 
 
 def pascal_triangle(n):
-    """Create a function def pascal_triangle(n): that returns a list of lists
-    of integers representing the Pascal’s triangle of n
+    """Returns list of lists of pascal's triangle integers
     """
 
     list_of_list = []
@@ -15,7 +14,8 @@ def pascal_triangle(n):
             pascal_list = []
 
             # Pascal coeff = nCr = n! / (r! * (n-r)!)
-            n = n - 1  # to accommodate index 0
+            # to accommodate index 0
+            n = n - 1
             for r in range(n + 1):
                 num = factorial(n) / (factorial(r) * factorial(n - r))
                 pascal_list.append(round(num))
@@ -31,6 +31,3 @@ def factorial(n):
     elif n == 1:
         return 1
     return n * factorial(n-1)
-
-
-print(pascal_triangle(2))
