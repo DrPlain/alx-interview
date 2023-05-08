@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+""" Unlock boxes algorithm """
+
+
 def canUnlockAll(boxes):
+    """ A method to determine if all the boxes can be opened """
     num_boxes = len(boxes)
     available_keys = set([0])
     no_keys = set()
