@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Log Parser
+"""
+Log Parser
 Reads from stdin line by line and computes metrics
 """
 from sys import stdin
@@ -7,17 +8,10 @@ import datetime
 import re
 
 count = 0
-parameters = {
-    '200': 0,
-    '301': 0,
-    '400': 0,
-    '401': 0,
-    '403': 0,
-    '404': 0,
-    '405': 0,
-    '500': 0,
-    'size': 0
-}
+file_size = 0
+parameters = {'200': 0, '301': 0, '400': 0, '401': 0,
+              '403': 0, '404': 0, '405': 0, '500': 0
+              }
 
 
 def check_format(line):
@@ -69,38 +63,40 @@ def check_format(line):
 
 def print_output():
     """ Helper function to print computed statistics"""
-    print(f"File size: {parameters['size']}")
+    print(f"File size: {file_size}")
     for k, v in parameters.items():
-        if k != 'size' and v != 0:
+        if v != 0:
             print(f"{k}: {v}")
 
 
-try:
-    for line in stdin:
-        tokens = check_format(line)
-        if tokens:
-            if tokens[2] == '200':
-                parameters['200'] += 1
-            elif tokens[2] == '301':
-                parameters['301'] += 1
-            elif tokens[2] == '400':
-                parameters['400'] += 1
-            elif tokens[2] == '401':
-                parameters['401'] += 1
-            elif tokens[2] == '403':
-                parameters['403'] += 1
-            elif tokens[2] == '404':
-                parameters['404'] += 1
-            elif tokens[2] == '405':
-                parameters['405'] += 1
-            elif tokens[2] == '500':
-                parameters['500'] += 1
+if __name__ == "__main__":
+    try:
+        for line in stdin:
+            tokens = check_format(line)
+            if tokens:
+                if tokens[2] == '200':
+                    parameters['200'] += 1
+                elif tokens[2] == '301':
+                    parameters['301'] += 1
+                elif tokens[2] == '400':
+                    parameters['400'] += 1
+                elif tokens[2] == '401':
+                    parameters['401'] += 1
+                elif tokens[2] == '403':
+                    parameters['403'] += 1
+                elif tokens[2] == '404':
+                    parameters['404'] += 1
+                elif tokens[2] == '405':
+                    parameters['405'] += 1
+                elif tokens[2] == '500':
+                    parameters['500'] += 1
 
-            parameters['size'] += int(tokens[3])
-            count = count + 1
-            if count % 3 == 0:
-                print_output()
-        else:
-            continue
-except KeyboardInterrupt:
-    print_output()
+                file_size += int(tokens[3])
+                count = count + 1
+                if count % 3 == 0:
+                    print_output()
+            else:
+                continue
+    except KeyboardInterrupt:
+        print_output()
+        raise
