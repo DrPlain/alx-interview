@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 """ Log Parser
 Reads from stdin line by line and computes metrics
-Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1"
-            <status code> <file size>
-After every 10 lines or KeyboardInterrupt, metrics
-are printed on the screen
 """
 from sys import stdin
 import datetime
