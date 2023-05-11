@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
                 file_size += int(tokens[3])
                 count = count + 1
-                if count % 3 == 0:
+                if count % 10 == 0:
                     print_output()
             else:
                 continue
