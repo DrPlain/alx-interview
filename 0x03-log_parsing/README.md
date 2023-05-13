@@ -1,1 +1,2 @@
-# Log parsing
+# Alx interview question
+## Algorithm: Log parsing
