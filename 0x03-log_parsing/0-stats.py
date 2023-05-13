@@ -17,9 +17,10 @@ def print_output():
     Helper function to print computed statistics
     """
     print("File size: {}".format(file_size))
-    for k, v in status_codes.items():
-        if v != 0:
-            print("{}: {}".format(k, v))
+    codes = sorted(status_codes.keys())
+    for code in codes:
+        if status_codes[code] != 0:
+            print("{}: {}".format(code, status_codes[code]))
 
 
 if __name__ == "__main__":
